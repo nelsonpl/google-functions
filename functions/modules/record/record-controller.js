@@ -1,24 +1,25 @@
 const {onRequest} = require("firebase-functions/v2/https")
 const {onDocumentCreated} = require("firebase-functions/v2/firestore")
-const recordService = require("./record-service")
+const recordValidators = require("./record-validators")
 
-const incrementIdGenerator = require("../../utils/increment-id-generator")
+module.exports = function(firestore) {
+  const recordService = require("./record-service")(firestore)
 
-exports.post = onRequest(async (req, res) => {
-  const {name} = req.body
+  return {
+    post: onRequest(async ({body}, res) => {
+      const validationError = recordValidators.post(body)
 
-  if (!name || !name.trim()) {
-    res.status(400).json({message: "Name is required"})
-    return
+      if (validationError) {
+        res.status(400).json(validationError)
+        return
+      }
+
+      const recordAdded = await recordService.add(body)
+      res.json({data: recordAdded, message: "Record created"})
+    }),
+
+    onCreated: onDocumentCreated(async (event) => {
+      await recordService.onCreated(event)
+    }),
   }
-
-  const recordAdded = await recordService.add({name})
-
-  res.json({data: recordAdded, message: "Record created"})
-})
-
-exports.onCreated =
-  onDocumentCreated("records/{recordId}", async (event) => {
-    const incrementId = await incrementIdGenerator("records")
-    return event.data.ref.set({incrementId}, {merge: true})
-  })
+}

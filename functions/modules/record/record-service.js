@@ -1,18 +1,22 @@
-const {getFirestore} = require("firebase-admin/firestore")
+module.exports = function(firestore) {
+  const utils = require("../utils")(firestore)
 
-const incrementIdGenerator = require("../../utils/increment-id-generator")
+  return {
+    add: async ({name}) => {
+      const writeResult = await firestore
+          .collection("records")
+          .add({name})
 
-exports.add = async ({name}) => {
-  const writeResult = await getFirestore()
-      .collection("records")
-      .add({name})
+      const recordAdded = {id: writeResult.id, name: name}
 
-  const recordAdded = {id: writeResult.id, name: name}
+      return recordAdded
+    },
 
-  return recordAdded
+    onCreated: async (event) => {
+      const incrementId = await utils.incrementIdGenerator("records")
+      return event.data.ref.set({incrementId}, {merge: true})
+    },
+  }
 }
 
-exports.onCreated = async (event) => {
-  const incrementId = await incrementIdGenerator("records")
-  return event.data.ref.set({incrementId}, {merge: true})
-}
+
