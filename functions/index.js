@@ -1,10 +1,9 @@
 const {initializeApp} = require("firebase-admin/app")
-const {getFirestore} = require("firebase-admin/firestore")
 
 initializeApp()
 
 const recordController =
-    require("./modules/record/record-controller")(getFirestore())
+    require("./modules/record/record-controller")()
 
 exports.recordPost = recordController.post
 

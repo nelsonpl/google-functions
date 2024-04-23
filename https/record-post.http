@@ -1,0 +1,8 @@
+POST http://127.0.0.1:5001/super-frete-nelson/us-central1/recordPost
+# POST https://recordpost-volti5omta-uc.a.run.app
+Accept: application/json
+Content-Type: application/json
+
+{
+    "name": "Nelson"
+}
