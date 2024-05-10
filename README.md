@@ -1,58 +1,58 @@
-# Projeto teste para processo seletivo da Super Frete
+# Google Functions
 
-## Descrição
+## Description
 
-Este projeto foi desenvolvido utilizando Google Firebase Functions para backend, Firebase para hospedagem e banco de dados, e Jest para testes unitários.
+This project was developed using Google Firebase Functions for backend, Firebase for hosting and database, and Jest for unit testing.
 
 [![Firebase](https://img.shields.io/badge/firebase-9C27B0?style=flat&logo=firebase&logoColor=white)](https://firebase.google.com/)
 [![Jest](https://img.shields.io/badge/jest-C21325?style=flat&logo=jest&logoColor=white)](https://jestjs.io/)
 [![ESLint](https://img.shields.io/badge/eslint-4B32C3?style=flat&logo=eslint&logoColor=white)](https://eslint.org/)
 
-## Arquitetura escolhida
+## Chosen Architecture
 
-A arquitetura escolhida para este projeto segue uma abordagem modular, onde cada funcionalidade principal é encapsulada em módulos separados. Aqui está uma explicação mais detalhada:
+The chosen architecture for this project follows a modular approach, where each main functionality is encapsulated in separate modules. Here's a more detailed explanation:
 
-1. **functions**: Esta pasta contém o código principal das funções Firebase. Aqui estão as configurações do projeto, incluindo o arquivo `index.js`, que serve como ponto de entrada para as funções.
+1. **functions**: This folder contains the main code for Firebase functions. Here are the project configurations, including the `index.js` file, which serves as the entry point for the functions.
 
-2. **modules**: Dentro desta pasta, estão os módulos específicos do projeto. No caso, há um módulo chamado `record`, que está relacionado ao gerenciamento de registros.
+2. **modules**: Inside this folder are the project-specific modules. In this case, there is a module called `record`, which is related to record management.
 
-3. **test**: Aqui estão os testes unitários para o projeto. Os testes estão organizados de acordo com os módulos correspondentes na estrutura principal.
+3. **test**: Here are the unit tests for the project. The tests are organized according to the corresponding modules in the main structure.
 
-4. **utils**: Esta pasta contém utilitários genéricos que podem ser compartilhados em todo o projeto. O arquivo `index.js` é o principal utilitário deste projeto.
+4. **utils**: This folder contains generic utilities that can be shared throughout the project. The `index.js` file is the main utility for this project.
 
-A escolha desta arquitetura traz benefícios significativos:
+The choice of this architecture brings significant benefits:
 
-- **Modularidade**: Cada parte do projeto é encapsulada em módulos separados, facilitando a manutenção e o entendimento do código.
+- **Modularity**: Each part of the project is encapsulated in separate modules, making maintenance and understanding of the code easier.
 
-- **Testabilidade**: A estrutura facilita a escrita de testes unitários, pois os testes estão diretamente associados aos módulos correspondentes.
+- **Testability**: The structure facilitates the writing of unit tests, as the tests are directly associated with the corresponding modules.
 
-- **Organização**: A estrutura clara e organizada torna mais fácil para os desenvolvedores entenderem e navegarem pelo código.
+- **Organization**: The clear and organized structure makes it easier for developers to understand and navigate through the code.
 
-Essa arquitetura foi escolhida para promover a clareza, a reusabilidade e a facilidade de manutenção do projeto.
+This architecture was chosen to promote clarity, reusability, and ease of project maintenance.
 
-## Executando o projeto localmente
+## Running the Project Locally
 
-Para executar o projeto localmente, siga estes passos:
+To run the project locally, follow these steps:
 
-1. Certifique-se de ter o Node.js (versão 18) e o Firebase CLI instalados em sua máquina.
-2. Clone este repositório.
-3. Navegue até a pasta `functions`.
-4. Instale as dependências do projeto executando `yarn install`.
-5. Execute `firebase emulators:start` para iniciar os emuladores do Firebase localmente.
-6. Agora, siga as instruções fornecidas no terminal para acessar o projeto localmente.
+1. Make sure you have Node.js (version 18) and Firebase CLI installed on your machine.
+2. Clone this repository.
+3. Navigate to the `functions` folder.
+4. Install project dependencies by running `yarn install`.
+5. Run `firebase emulators:start` to start the Firebase emulators locally.
+6. Now, follow the instructions provided in the terminal to access the project locally.
 
-## Deploy do projeto
+## Project Deployment
 
-Para fazer o deploy do projeto, siga estes passos:
+To deploy the project, follow these steps:
 
-1. Certifique-se de estar autenticado no Firebase CLI, executando `firebase login`.
-2. Execute `firebase deploy` na pasta `functions`.
-3. O projeto será implantado e estará acessível na URL fornecida pelo Firebase.
+1. Make sure you are authenticated with Firebase CLI by running `firebase login`.
+2. Run `firebase deploy` in the `functions` folder.
+3. The project will be deployed and accessible at the URL provided by Firebase.
 
-## Executando testes unitários
+## Running Unit Tests
 
-Para executar os testes unitários, siga estes passos:
+To run unit tests, follow these steps:
 
-1. Certifique-se de estar na pasta `functions`.
-2. Execute `yarn test` para iniciar a execução dos testes com o Jest.
-3. Os resultados dos testes serão exibidos no terminal.
+1. Make sure you are in the `functions` folder.
+2. Run `yarn test` to start executing tests with Jest.
+3. Test results will be displayed in the terminal.
